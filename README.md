@@ -27,6 +27,8 @@ left, right, above, and below.
 
 To win, turn all the lights off.
 
+To reset the level, push the rotary encoder button.
+
 ## To add new levels:
 
 Add sets of lists to `patterns.py`.  1 is on, 0 is off.
