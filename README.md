@@ -6,8 +6,9 @@ A game of Lights Out on the [Adafruit MacroPad](https://www.adafruit.com/product
 Grab the [CircuitPython libraries](https://circuitpython.org/libraries) for your version of CircuitPython.
 
 You'll need to put the following in the `/lib` folder on the MacroPad:
- * `adafruit_displayio_layout/`
  * `adafruit_display_text/`
+ * `adafruit_hid/`
+ * `adafruit_midi/`
  * `adafruit_debouncer.mpy`
  * `adafruit_macropad.mpy`
  * `adafruit_simple_text_display.mpy`
