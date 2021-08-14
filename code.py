@@ -1,13 +1,14 @@
 from adafruit_macropad import MacroPad
 import patterns
 
+# How big our MacroPad is:
 rows = 4
 cols = 3
 
-btns = []
-macropad = MacroPad()
-score = 0
-text = macropad.display_text()
+btns = []  # We'll use this to store the patterns of on/off lights
+macropad = MacroPad()  # set up the MacroPad
+score = 0  # track the number of moves to solve a level
+text = macropad.display_text()  # this will hold the score and level display
 
 
 def copyPattern(p):
