@@ -7,6 +7,7 @@ COLS = 3
 BTNS = []
 macropad = MacroPad()
 score = 0
+text = macropad.display_text()
 
 
 def copyPattern(p):
@@ -70,8 +71,8 @@ def checkvictory():
             light_on = True
         ctr = ctr + 1
     if not light_on:
-    	print("Victory!")
-    	print("Score:", score)
+    	text[2].text = "Victory!"
+    	text[3].text = "Score: " + str(score)
     	score = 0
 
 
@@ -79,16 +80,20 @@ def checkvictory():
 last_position = None
 last_encoder_switch = macropad.encoder_switch_debounced.pressed
 BTNS = copyPattern(0)
+text[0].text = "Level 1"
+text.show()
 
 while True:
     lightshow()
     position = macropad.encoder
     if position != last_position:
-        # TODO: Level number display!
+    	# Change level
         score = 0
-        #BTNS = []
-        #BTNS.append(patterns.patterns[position % len(patterns.patterns)][:])
-        BTNS = copyPattern(position % len(patterns.patterns))
+        level = position % len(patterns.patterns)
+        text[0].text = "Level " + str(level + 1)
+        text[2].text = ""
+        text[3].text = ""
+        BTNS = copyPattern(level)
         last_position = position
 
     macropad.encoder_switch_debounced.update()
@@ -96,8 +101,8 @@ while True:
     if encoder_switch:
         # Reset level
         score = 0
-        #BTNS = []
-        #BTNS.append(patterns.patterns[position % len(patterns.patterns)][:])
+        text[2].text = ""
+        text[3].text = ""
         BTNS = copyPattern(position % len(patterns.patterns))
         
     event = macropad.keys.events.get()
@@ -106,4 +111,5 @@ while True:
         toggle(event.key_number)
         lightshow()
         checkvictory()
+
 
