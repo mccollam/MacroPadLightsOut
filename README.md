@@ -2,6 +2,8 @@
 
 A game of Lights Out on the [Adafruit MacroPad](https://www.adafruit.com/product/5128)
 
+![demo](img/demo.gif)
+
 ## To install:
 Grab the [CircuitPython libraries](https://circuitpython.org/libraries) for your version of CircuitPython.
 
