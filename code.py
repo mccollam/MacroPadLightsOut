@@ -43,39 +43,24 @@ def toggle(btn):
     row = btn // cols  # integer division (//) tosses out the remainder
     
     # We start with the easy bit: toggle the light for the button pressed:
-    if btns[row][col] == 0:
-        btns[row][col] = 1
-    else:
-    	btns[row][col] = 0
+    btns[row][col] = not btns[row][col]
 
     # Now we need to check to see if we're at an edge.  If not, we need to
     # toggle the light on the left...
-    if row - 1 >= 0:  # are we as far left as we can go?
-        if btns[row-1][col] == 0:
-	    btns[row-1][col] = 1
-	else:
-	    btns[row-1][col] = 0
+    if row - 1 >= 0:  # is there a button on the left?
+        btns[row-1][col] = not btns[row-1][col]
 
     # ... and on the right...
     if row + 1 < rows:
-        if btns[row+1][col] == 0:
-            btns[row+1][col] = 1
-        else:
-            btns[row+1][col] = 0
+        btns[row+1][col] = not btns[row+1][col]
     
     # ... and above...
     if col - 1 >= 0:
-        if btns[row][col-1] == 0:
-            btns[row][col-1] = 1
-        else:
-            btns[row][col-1] = 0
+        btns[row][col-1] = not btns[row][col-1]
 
     # ... and below!
     if col + 1 < cols:
-        if btns[row][col+1] == 0:
-            btns[row][col+1] = 1
-        else:
-            btns[row][col+1] = 0
+        btns[row][col+1] = not btns[row][col+1]
 	   
 
 def lightshow():
@@ -86,7 +71,7 @@ def lightshow():
     ctr = 0  # start at the beginning, which corresponds to row 0, column 0
     for i in range(rows):  # go through each row
         for j in range(cols):  # in each row, go through each column
-            if btns[i][j] == 1:  # check if we should light this one up or not
+            if btns[i][j]:  # check if we should light this one up or not
                 macropad.pixels[ctr] = 0xffffff  # white
             else:
                 macropad.pixels[ctr] = 0x000000  # black
